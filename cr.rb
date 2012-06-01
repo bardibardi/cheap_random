@@ -1,16 +1,7 @@
-require 'cheap_random'
-require 'cheap_string'
-
-def play
-  s = CheapRandom::random_string(rand(10000))
-  x = s + 'X'
-  ip = CheapRandom::random_perm
-  CheapRandom::cheap_random5(true, ip, s, 0, s.length)
-  CheapRandom::cheap_random5(false, ip, s, 0, s.length)
-  s == x[0...(s.length)]
-end
-
-require 'cheap_random_rc'
+load 'cheap_random.rb'
+load 'cheap_string.rb'
+load 'cheap_random_rc.rb'
+load 'cheap_test.rb' if 'test' == ENV['CR']
 
 RANDOM_EXT = '.random'
 
