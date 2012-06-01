@@ -1,5 +1,11 @@
 module CheapTest
 
+  def self.cheap_perm_check!(perm, s)
+    return nil if length > 256
+    CheapRandom::permute perm, s, 0, length
+    CheapRandom::unpermute perm, s, 0, length
+  end
+ 
   def self.random_string(len)
     s = ' ' * len
     (0...len).each do |x|

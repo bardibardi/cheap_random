@@ -14,16 +14,10 @@ class String
   end
   
   def cheap_key!
-    ip = String::reverse_perm
+    ip = self.class.reverse_perm
     result = CheapRandom::cheap_random5(true, ip, self, 0, length)
     CheapRandom::cheap_random5(false, ip, self, 0, length)
     result
-  end
-  
-  def cheap_perm_check!(perm)
-    return nil if length > 256
-    CheapRandom::permute perm, self, 0, length
-    CheapRandom::unpermute perm, self, 0, length
   end
   
   def self.from_file(fn)
