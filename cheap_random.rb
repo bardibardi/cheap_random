@@ -83,12 +83,12 @@ module CheapRandom
     nil
   end
   
-  # is_locking is a boolean
-  # cheap_lock with is_locking true
-  # is decrypted with is_locking false
+  # is_randoming is a boolean
+  # cheap_random with is_randoming true
+  # is decrypted with is_randoming false
   # perm is a read only string of length 256 with each
   # char represented once
-  # perm is cheap_locks key
+  # perm is cheap_randoms key
   # nextperm writeable string of length 256
   # comes in as a copy of perm
   # it is the next key for use in a chain cypher
@@ -99,19 +99,19 @@ module CheapRandom
   # length is from 1 to 256
   # it is the number of chars to process
   # starting at offset in buffer
-  def self.cheap_lock7(is_locking, perm, nextperm, translation, buffer, offset, length)
-    if is_locking then
-      lock_cheap_lock(perm, nextperm, buffer, offset, length)
+  def self.cheap_random7(is_randoming, perm, nextperm, translation, buffer, offset, length)
+    if is_randoming then
+      random_cheap_random(perm, nextperm, buffer, offset, length)
     else
       (0..255).each do |x|
         translation.setbyte perm.getbyte(x), x
       end
-      unlock_cheap_lock(perm, nextperm, translation, buffer, offset, length)
+      unrandom_cheap_random(perm, nextperm, translation, buffer, offset, length)
     end
     return nil
   end
   
-  def self.lock_cheap_lock(perm, nextperm, buffer, offset, length)
+  def self.random_cheap_random(perm, nextperm, buffer, offset, length)
     disp = 0
     temp = 0
     y = 0
@@ -138,7 +138,7 @@ module CheapRandom
     nil
   end
   
-  def self.unlock_cheap_lock(perm, nextperm, translation, buffer, offset, length)
+  def self.unrandom_cheap_random(perm, nextperm, translation, buffer, offset, length)
     disp = 0
     temp = 0
     y = 255
@@ -164,25 +164,25 @@ module CheapRandom
     nil
   end
   
-  def self.next_block_size(size)
+  def self.next_brandom_size(size)
     return 256 if size > 511
     return size if size <= 256
     size - (size >> 1)
   end
   
   # length > 0
-  def self.cheap_lock5(is_locking, startperm, buffer, offset, length)
+  def self.cheap_random5(is_randoming, startperm, buffer, offset, length)
     nextperm = startperm + 'NEXT'
     perm = (' ' * 256) + 'PERM'
     translation = (' ' * 256) + 'TRAN'
     len = length
     off = offset
     while len > 0 do
-      bs = next_block_size len
+      bs = next_brandom_size len
       (0..255).each do |x|
         perm.setbyte x, nextperm.getbyte(x)
       end
-      cheap_lock7(is_locking, perm, nextperm, translation, buffer, off, bs)
+      cheap_random7(is_randoming, perm, nextperm, translation, buffer, off, bs)
       off += bs
       len -= bs
     end

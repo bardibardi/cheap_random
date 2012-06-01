@@ -5,8 +5,8 @@ def play
   s = CheapRandom::random_string(rand(10000))
   x = s + 'X'
   ip = CheapRandom::random_perm
-  CheapRandom::cheap_lock5(true, ip, s, 0, s.length)
-  CheapRandom::cheap_lock5(false, ip, s, 0, s.length)
+  CheapRandom::cheap_random5(true, ip, s, 0, s.length)
+  CheapRandom::cheap_random5(false, ip, s, 0, s.length)
   s == x[0...(s.length)]
 end
 
@@ -29,10 +29,10 @@ def cr(fn)
   nafn = afn[0, is_random] if is_random
   nafn = afn + RANDOM_EXT unless is_random
   s = String.from_file afn
-  is_locking = !is_random
-  s.cheap_lock2! is_locking, PERM
+  is_randoming = !is_random
+  s.cheap_random2! is_randoming, PERM
   s.to_file nafn
-  s.to_file afn if is_locking
+  s.to_file afn if is_randoming
   File.delete afn
 end
 

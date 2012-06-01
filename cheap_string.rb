@@ -1,14 +1,14 @@
 class String
   
-  def cheap_lock2!(is_locking, perm)
-    CheapRandom::cheap_lock5(is_locking, perm, self, 0, length)
+  def cheap_random2!(is_randoming, perm)
+    CheapRandom::cheap_random5(is_randoming, perm, self, 0, length)
     nil
   end
   
   def cheap_key!
     ip = CheapRandom::reverse_perm
-    result = CheapRandom::cheap_lock5(true, ip, self, 0, length)
-    CheapRandom::cheap_lock5(false, ip, self, 0, length)
+    result = CheapRandom::cheap_random5(true, ip, self, 0, length)
+    CheapRandom::cheap_random5(false, ip, self, 0, length)
     result
   end
   
