@@ -1,21 +1,5 @@
 module CheapRandom
 
-  def self.identity_perm
-    s = ' ' * 256
-    (0..255).each do |x|
-      s.setbyte x, x
-    end
-    s
-  end
-  
-  def self.reverse_perm
-    s = ' ' * 256
-    (0..255).each do |x|
-      s.setbyte(x, 255 - x)
-    end
-    s
-  end
-  
   def self.subperm(perm, length)
     result = ' ' * length
     idx = 0
@@ -62,9 +46,9 @@ module CheapRandom
     nil
   end
   
-  # is_randoming is a boolean
-  # cheap_random with is_randoming true
-  # is decrypted with is_randoming false
+  # is_randomizing is a boolean
+  # cheap_random with is_randomizing true
+  # is decrypted with is_randomizing false
   # perm is a read only string of length 256 with each
   # char represented once
   # perm is cheap_randoms key
@@ -78,8 +62,8 @@ module CheapRandom
   # length is from 1 to 256
   # it is the number of chars to process
   # starting at offset in buffer
-  def self.cheap_random7(is_randoming, perm, nextperm, translation, buffer, offset, length)
-    if is_randoming then
+  def self.cheap_random7(is_randomizing, perm, nextperm, translation, buffer, offset, length)
+    if is_randomizing then
       random_cheap_random(perm, nextperm, buffer, offset, length)
     else
       (0..255).each do |x|
@@ -143,25 +127,25 @@ module CheapRandom
     nil
   end
   
-  def self.next_brandom_size(size)
+  def self.next_block_size(size)
     return 256 if size > 511
     return size if size <= 256
     size - (size >> 1)
   end
   
   # length > 0
-  def self.cheap_random5(is_randoming, startperm, buffer, offset, length)
+  def self.cheap_random5(is_randomizing, startperm, buffer, offset, length)
     nextperm = startperm + 'NEXT'
     perm = (' ' * 256) + 'PERM'
     translation = (' ' * 256) + 'TRAN'
     len = length
     off = offset
     while len > 0 do
-      bs = next_brandom_size len
+      bs = next_block_size len
       (0..255).each do |x|
         perm.setbyte x, nextperm.getbyte(x)
       end
-      cheap_random7(is_randoming, perm, nextperm, translation, buffer, off, bs)
+      cheap_random7(is_randomizing, perm, nextperm, translation, buffer, off, bs)
       off += bs
       len -= bs
     end

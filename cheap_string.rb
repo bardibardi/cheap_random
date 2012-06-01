@@ -1,12 +1,20 @@
 class String
   
-  def cheap_random2!(is_randoming, perm)
-    CheapRandom::cheap_random5(is_randoming, perm, self, 0, length)
+  def self.reverse_perm
+    s = ' ' * 256
+    (0..255).each do |x|
+      s.setbyte(x, 255 - x)
+    end
+    s
+  end
+ 
+  def cheap_random2!(is_randomizing, perm)
+    CheapRandom::cheap_random5(is_randomizing, perm, self, 0, length)
     nil
   end
   
   def cheap_key!
-    ip = CheapRandom::reverse_perm
+    ip = String::reverse_perm
     result = CheapRandom::cheap_random5(true, ip, self, 0, length)
     CheapRandom::cheap_random5(false, ip, self, 0, length)
     result

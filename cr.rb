@@ -20,10 +20,10 @@ def cr(fn)
   nafn = afn[0, is_random] if is_random
   nafn = afn + RANDOM_EXT unless is_random
   s = String.from_file afn
-  is_randoming = !is_random
-  s.cheap_random2! is_randoming, PERM
+  is_randomizing = !is_random
+  s.cheap_random2! is_randomizing, PERM
   s.to_file nafn
-  s.to_file afn if is_randoming
+  s.to_file afn if is_randomizing
   File.delete afn
 end
 
