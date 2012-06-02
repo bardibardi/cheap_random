@@ -1,5 +1,4 @@
 load 'cheap_random.rb'
-load 'cheap_string.rb'
 load 'cheap_random_rc.rb'
 load 'cheap_test.rb' if 'test' == ENV['CR']
 
@@ -19,11 +18,11 @@ def cr(fn)
   is_random = afn =~ /\.random$/
   nafn = afn[0, is_random] if is_random
   nafn = afn + RANDOM_EXT unless is_random
-  s = String.from_file afn
+  s = CheapRandom.from_file afn
   is_randomizing = !is_random
-  s.cheap_random2! is_randomizing, PERM
-  s.to_file nafn
-  s.to_file afn if is_randomizing
+  CheapRandom.cheap_random3! is_randomizing, PERM, s
+  CheapRandom.to_file nafn, s
+  CheapRandom.to_file afn, s if is_randomizing
   File.delete afn
 end
 

@@ -39,8 +39,8 @@ module CheapTest
     s = random_string(rand(10000))
     x = s + 'X'
     ip = random_perm
-    CheapRandom::cheap_random5(true, ip, s, 0, s.length)
-    CheapRandom::cheap_random5(false, ip, s, 0, s.length)
+    CheapRandom::cheap_random3!(true, ip, s)
+    CheapRandom::cheap_random3!(false, ip, s)
     s == x[0...(s.length)]
   end
   

@@ -151,6 +151,38 @@ module CheapRandom
     end
     nextperm[0..255]
   end
-
+  
+  def self.reverse_perm
+    s = ' ' * 256
+    (0..255).each do |x|
+      s.setbyte(x, 255 - x)
+    end
+    s
+  end
+ 
+  def self.cheap_random3!(is_randomizing, perm, s)
+    cheap_random5(is_randomizing, perm, s, 0, s.length)
+  end
+  
+  def self.cheap_key!(s)
+    ip = reverse_perm
+    result = cheap_random3!(true, ip, s)
+    cheap_random3!(false, ip, s)
+    result
+  end
+  
+  def self.from_file(fn)
+    f = File.new fn
+    s = f.read
+    f.close
+    s.force_encoding 'ASCII-8BIT'
+  end
+  
+  def self.to_file(fn, s)
+    f = File.new fn, "wb"
+    f.write s
+    f.close
+  end
+  
 end # CheapRandom
   
