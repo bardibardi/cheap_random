@@ -1,4 +1,5 @@
 load 'cheap_random.rb'
+load 'cheap_file.rb'
 load 'cheap_random_rc.rb'
 load 'cheap_test.rb' if 'test' == ENV['CR']
 
@@ -18,12 +19,12 @@ def cr(fn)
   is_random = afn =~ /\.random$/
   nafn = afn[0, is_random] if is_random
   nafn = afn + RANDOM_EXT unless is_random
-  s = CheapRandom.from_file afn
+  s = CheapFile.from_file afn
   is_randomizing = !is_random
   CheapRandom.cheap_random3! is_randomizing, PERM, s
-  CheapRandom.to_file nafn, s
-  CheapRandom.to_file afn, s if is_randomizing
-  File.delete afn
+  CheapFile.to_file nafn, s
+  CheapFile.to_file afn, s if is_randomizing
+  CheapFile.delete afn
 end
 
 cr ARGV[1] unless 'test' == ENV['CR']
