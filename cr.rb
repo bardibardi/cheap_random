@@ -1,31 +1,10 @@
 load 'cheap_random.rb'
+load 'cheap_file_rc.rb'
 load 'cheap_file.rb'
-load 'cheap_random_rc.rb'
-load 'cheap_test.rb' if 'test' == ENV['CR']
 
-RANDOM_EXT = '.random'
-
-def abs_fn(fn)
-  BASE_DIR + '/' + fn
+if 'test' == ENV['CR']
+  load 'cheap_test.rb'
+else
+  CheapFile.cr ARGV[1]
 end
-
-def cr(fn)
-  return unless fn
-  afn = abs_fn fn
-  if not File.file?(afn)
-    puts afn + ' cannot be processed.'
-    return nil
-  end
-  is_random = afn =~ /\.random$/
-  nafn = afn[0, is_random] if is_random
-  nafn = afn + RANDOM_EXT unless is_random
-  s = CheapFile.from_file afn
-  is_randomizing = !is_random
-  CheapRandom.cheap_random3! is_randomizing, PERM, s
-  CheapFile.to_file nafn, s
-  CheapFile.to_file afn, s if is_randomizing
-  CheapFile.delete afn
-end
-
-cr ARGV[1] unless 'test' == ENV['CR']
 
