@@ -1,5 +1,6 @@
 load 'cheap_random.rb'
 load 'cheap_file.rb'
+load 'cheap_big_file.rb'
 load 'cheap_file_rc.rb'
 
 if 'test' == ENV['CR']

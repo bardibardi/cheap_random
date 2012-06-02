@@ -7,7 +7,8 @@ module CheapFileRc
   XLAT = lambda {|is_do, s| CheapRandom.cheap_random3! is_do, PERM, s}
   XLAT_EXT = '.random'
   CR = lambda do |fn|
-    CheapFile.new(BASE_DIR, XLAT_EXT, XLAT).in_memory_in_place_xlat fn
+#   CheapFile.new(BASE_DIR, XLAT_EXT, XLAT).in_memory_in_place_xlat fn
+    CheapBigFile.new(9, BASE_DIR, XLAT_EXT, XLAT).in_place_xlat fn
   end
 
 end #CheapFileRc
