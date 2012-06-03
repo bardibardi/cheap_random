@@ -35,7 +35,7 @@ module CheapTest
     s
   end
   
-  def self.play
+  def self.is_reversible?
     s = random_string(rand(10000))
     x = s + 'X'
     ip = random_perm

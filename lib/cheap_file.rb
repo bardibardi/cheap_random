@@ -29,16 +29,17 @@ class CheapFile
     [!xlat_match, afn, new_afn]
   end
 
-  def initialize(base_dir, xlat_ext, xlat_lambda)
+  def initialize(base_dir, xlat_ext, seed, xlat_lambda)
     @base_dir = base_dir
     @xlat_ext = xlat_ext
+    @seed = seed
     @xlat = xlat_lambda
   end
 
   def in_memory_in_place_xlat(fn)
     is_do, afn, new_afn = self.class.is_do_afn_new_afn @base_dir, fn, @xlat_ext
     s = self.class.from_file afn
-    @xlat.call is_do, s
+    @xlat.call is_do, @seed, s
     self.class.to_file new_afn, s
     self.class.to_file afn, s if is_do
     self.class.delete afn

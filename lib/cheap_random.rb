@@ -50,17 +50,17 @@ module CheapRandom
   # cheap_random with is_randomizing true
   # is decrypted with is_randomizing false
   # perm is a read only string of length 256 with each
-  # char represented once
-  # perm is cheap_randoms key
+  # byte represented once
+  # perm is cheap_randoms seed
   # nextperm writeable string of length 256
   # comes in as a copy of perm
-  # it is the next key for use in a chain cypher
-  # translation is a buffer needed for perm reversed as a substitution cipher
-  # buffer is read as cleartext
-  # and written as ciphertext
+  # it is the next seed for use in chain seeding
+  # translation is a buffer needed for perm reversed as a substitution transformation
+  # buffer is read as unrandomized text
+  # and written as randomized text
   # offset is a pointer into the buffer
   # length is from 1 to 256
-  # it is the number of chars to process
+  # it is the number of bytes to process
   # starting at offset in buffer
   def self.cheap_random7(is_randomizing, perm, nextperm, translation, buffer, offset, length)
     if is_randomizing then
@@ -164,7 +164,7 @@ module CheapRandom
     cheap_random5!(is_randomizing, perm, s, 0, s.length)
   end
   
-  def self.cheap_key!(s)
+  def self.cheap_seed!(s)
     ip = reverse_perm
     result = cheap_random3!(true, ip, s)
     cheap_random3!(false, ip, s)
