@@ -17,10 +17,6 @@ class CheapFile
     f.close
   end
  
-  def self.delete(afn)
-    File.delete afn
-  end
-
   def self.is_do_afn_new_afn(base_dir, fn, xlat_ext)
     afn = "#{base_dir}/#{fn}"
     xlat_match = afn =~ Regexp.new("\\#{xlat_ext}$")
@@ -42,7 +38,6 @@ class CheapFile
     @xlat.call is_do, @seed, s
     self.class.to_file new_afn, s
     self.class.to_file afn, s if is_do
-    self.class.delete afn
   end
 
 end #CheapFile

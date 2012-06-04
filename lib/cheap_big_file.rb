@@ -53,8 +53,6 @@ class CheapBigFile < CheapFile
         self.class.xlat(fd_in, fd_out, @half_block_size, is_do, @seed, @xlat)
       end
     end
-    # wipe_file afn
-    self.class.delete afn
   end
 
 end #CheapBigFile
