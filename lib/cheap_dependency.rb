@@ -1,10 +1,10 @@
 module CheapDependency
 
-  def self.cd_should_load?
+  def self.cd_test?
     'test' == ENV[CHEAP_DEPENDENCY_ENV_NAME]
   end
 
-  def self.cd_should_load(load)
+  def self.cd_test(load)
     ENV[CHEAP_DEPENDENCY_ENV_NAME] = 'test' if load
     ENV[CHEAP_DEPENDENCY_ENV_NAME] = 'no_test' unless load
   end
@@ -28,7 +28,7 @@ module CheapDependency
 
   def self.cd_get(*relative_fn_base_array)
     relative_fn_base_array.each do |relative_fn_base|
-      if cd_should_load?
+      if cd_test?
         cd_load_relative relative_fn_base
       else
         cd_require_relative relative_fn_base

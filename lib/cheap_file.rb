@@ -24,23 +24,22 @@ class CheapFile
     [!xlat_match, afn, new_afn]
   end
 
-  def initialize(base_dir, xlat_ext, seed, xlat_lambda, should_write = true)
+  def initialize(base_dir, xlat_ext, seed, xlat_lambda)
     @base_dir = base_dir
     @xlat_ext = xlat_ext
     @seed = seed
     @xlat = xlat_lambda
-    @should_write = should_write
   end
 
   def xlat_small(is_do, s)
     @xlat.call is_do, @seed, s
   end
 
-  def xlat_small_file(fn)
+  def xlat_small_file(fn, should_write = true)
     is_do, afn, new_afn = self.class.is_do_afn_new_afn @base_dir, fn, @xlat_ext
     s = self.class.from_file afn
     perm = xlat_small is_do, s
-    self.class.to_file new_afn, s if @should_write
+    self.class.to_file new_afn, s if should_write
     perm
   end
 
