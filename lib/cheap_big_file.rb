@@ -7,7 +7,7 @@ class CheapBigFile < CheapFile
   end
 
   def self.write(fd_out, s)
-    fd_out.write s
+    fd_out.write s if fd_out
   end
 
   def self.wipe!(s)
@@ -38,21 +38,32 @@ class CheapBigFile < CheapFile
       end
       s0 = s1
     end
+    perm
   end
 
-  def initialize(block_size_exponent, base_dir, xlat_ext, seed, xlat_lambda)
-    super base_dir, xlat_ext, seed, xlat_lambda
+  def initialize(block_size_exponent, base_dir, xlat_ext, seed, xlat_lambda, should_write = true)
+    super base_dir, xlat_ext, seed, xlat_lambda, should_write
     @block_size = 1 << block_size_exponent
     @half_block_size = @block_size >> 1
   end
 
-  def in_place_xlat(fn)
+  def xlat_big(fd_in, fd_out, is_do)
+    self.class.xlat(fd_in, fd_out, @half_block_size, is_do, @seed, @xlat)
+  end
+
+  def xlat_big_file(fn)
     is_do, afn, new_afn = self.class.is_do_afn_new_afn @base_dir, fn, @xlat_ext
+    perm = nil
     File.open(afn) do |fd_in|
-      File.open(new_afn, 'wb') do |fd_out|
-        self.class.xlat(fd_in, fd_out, @half_block_size, is_do, @seed, @xlat)
+      if @should_write
+        File.open(new_afn, 'wb') do |fd_out|
+          perm = xlat_big(fd_in, fd_out, is_do)
+        end
+      else
+        perm = xlat_big(fd_in, nil, is_do)
       end
     end
+    perm
   end
 
 end #CheapBigFile
