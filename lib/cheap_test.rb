@@ -1,5 +1,9 @@
 module CheapTest
 
+  def self.random(n)
+    rand(n)
+  end
+
   def self.cheap_perm_check!(perm, s)
     return nil if length > 256
     CheapRandom::permute perm, s, 0, length
@@ -9,7 +13,7 @@ module CheapTest
   def self.random_string(len)
     s = ' ' * len
     (0...len).each do |x|
-      s.setbyte x, rand(256)
+      s.setbyte x, random(256)
     end
     s
   end
@@ -27,7 +31,7 @@ module CheapTest
     i = 256
     (0..255).each do |x|
       temp = s.getbyte x
-      y = x + rand(i)
+      y = x + random(i)
       s.setbyte x, s.getbyte(y)
       s.setbyte y, temp
       i -= 1
@@ -36,7 +40,7 @@ module CheapTest
   end
   
   def self.is_reversible?
-    s = random_string(rand(10000))
+    s = random_string(random(10000))
     x = s + 'X'
     ip = random_perm
     CheapRandom::cheap_random3!(true, ip, s)
