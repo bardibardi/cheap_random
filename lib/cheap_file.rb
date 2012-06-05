@@ -5,7 +5,7 @@ class CheapFile
   end
 
   def self.from_file(afn)
-    f = File.new afn
+    f = File.new afn, 'rb'
     s = f.read
     s.force_encoding 'ASCII-8BIT'
   end

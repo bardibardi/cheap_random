@@ -54,7 +54,7 @@ class CheapBigFile < CheapFile
   def xlat_big_file(fn, should_write = true)
     is_do, afn, new_afn = self.class.is_do_afn_new_afn @base_dir, fn, @xlat_ext
     perm = nil
-    File.open(afn) do |fd_in|
+    File.open(afn, 'rb') do |fd_in|
       if should_write
         File.open(new_afn, 'wb') do |fd_out|
           perm = xlat_big(fd_in, fd_out, is_do)
