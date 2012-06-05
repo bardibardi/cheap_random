@@ -10,7 +10,7 @@ module CheapDependency
   end
 
   def self.cd_exists_absolute_fn(relative_fn_base)
-    afn = "#{File.dirname(__FILE__)}/#{relative_fn_base}.rb"
+    afn = File.expand_path("#{relative_fn_base}.rb", File.dirname(__FILE__))
     [File.exists?(afn), afn]
   end
 
