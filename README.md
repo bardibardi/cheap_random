@@ -7,7 +7,7 @@ CheapRandom is a set of tools for pseudo random number generation from arbitrary
 
 Version
 -------
-v0.6.0 alpha but useful, developed using ruby 1.9.3 and rspec 2.10.0.
+v0.7.0 beta, developed using ruby 1.9.3 and rspec 2.10.0.
 
 Installation
 ------------

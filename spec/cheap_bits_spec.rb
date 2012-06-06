@@ -1,6 +1,7 @@
 load 'cheap_file.rb'
 load 'cheap_big_file.rb'
 load 'cheap_bits.rb'
+load 'cheap_byte_count.rb'
 
 module CheapTest
 
@@ -8,6 +9,7 @@ module CheapTest
   RANDOM_FILE_SOURCE = "test.zip"
   XLAT_EXT = '.random'
   CB = CheapBits.new(9, BASE_DIR, RANDOM_FILE_SOURCE, XLAT_EXT)
+  FILE_NAME = "#{BASE_DIR}/#{RANDOM_FILE_SOURCE}#{XLAT_EXT}"
 
   def self.random(n)
     CB.random n
@@ -40,6 +42,17 @@ describe "CheapBits get_many_random" do
       plausible = i > 9750
       plausible.should == true
     end
+  end
+end
+
+describe "CheapBits get_many_random" do
+  it "should process all bytes in file" do
+    bca = CheapByteCount.byte_count_array_from_file CheapTest::FILE_NAME
+    how_many = File.new(CheapTest::FILE_NAME).size
+    CheapTest::CB.rewind
+    a = CheapTest::CB.get_many_random how_many, 256
+    same_byte_count_profile = bca == a
+    same_byte_count_profile.should == true
   end
 end
 

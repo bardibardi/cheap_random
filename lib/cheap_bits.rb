@@ -26,8 +26,7 @@ class CheapBits
     open unless @fd_in
     s = self.class.readblock @fd_in, @block_size
     if !s
-      close
-      open
+      rewind
       s = self.class.readblock @fd_in, @block_size
     end
     @current_block = s
@@ -42,6 +41,14 @@ class CheapBits
 
   def open
     @fd_in = File.open(@afn)
+  end
+
+  def rewind
+    close
+    open
+    @current_block = ''
+    @bits_total = 0
+    @bit_offset = 0
   end
 
   def getbit
