@@ -21,6 +21,15 @@ def chi(a)
   [d - 1, c]
 end
 
+def rand_array(a)
+  d = a.length
+  n = a.reduce(:+)
+  rand_a = []
+  d.times {rand_a << 0}
+  n.times {i = rand(d); rand_a[i] += 1}
+  rand_a 
+end
+
 def chi_of_bytes(file_name)
   bca = byte_count_array file_name
   chi bca
@@ -32,6 +41,8 @@ end
 
 if !CheapDependency.cd_test?
   file_name = ARGV[0]
-  p chi_of_bytes(file_name)
+  bca = byte_count_array file_name
+  p chi(bca)
+  p chi(rand_array(bca))
 end
 
