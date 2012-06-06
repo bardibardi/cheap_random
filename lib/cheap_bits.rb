@@ -78,7 +78,8 @@ class CheapBits
   end
 
   def random(n)
-    return nil unless n > 1
+    return nil unless n > 0
+    return 0 if 1 == n
     bits_needed = 0
     power_of_two = 1
     while n > power_of_two

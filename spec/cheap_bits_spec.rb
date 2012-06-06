@@ -17,6 +17,13 @@ module CheapTest
 
 end
 
+describe "CheapBits random(1)" do
+  it "should return 0" do
+    is_zero = 0 == CheapTest.random(1)
+    is_zero.should == true
+  end
+end
+
 describe "CheapBits random" do
   it "should get an in bounds number" do
     inbounds = 256 > CheapTest.random(256)
