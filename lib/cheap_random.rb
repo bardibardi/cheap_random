@@ -47,12 +47,12 @@ module CheapRandom
   end
   
   # is_randomizing is a boolean
-  # cheap_random with is_randomizing true
-  # is decrypted with is_randomizing false
+  # cheap_random with is_randomizing true, randomizes
+  # cheap_random with is_randomizing false, un-randomizes
   # perm is a read only string of length 256 with each
   # byte represented once
-  # perm is cheap_randoms seed
-  # nextperm writeable string of length 256
+  # perm is cheap_random's seed
+  # nextperm is a writeable string of length 256
   # comes in as a copy of perm
   # it is the next seed for use in chain seeding
   # translation is a buffer needed for perm reversed as a substitution transformation
