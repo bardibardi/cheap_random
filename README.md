@@ -19,7 +19,7 @@ Clone the repository. Create a directory called **random**, parallel to the repo
 
 Usage and documentation
 -----------------------
-Study the programs in the examples and spec directories and use the .rb files in the lib directory. See below for more information.
+Study the programs in the **examples** and **spec** directories and use the **.rb** files in the **lib** directory. See below for more information.
 
 License
 -------
@@ -45,7 +45,7 @@ The **CheapRandom seed** file does not need to be kept if it is generated from t
 
 CheapBits#random(n) in lib/cheap\_bits.rb
 -----------------------------------------
-**random(n)**, where n is an integer greater than zero, behaves like **Kernel::rand(n)**. It is only dependent on the **.random** file, not on how the **.random file** was generated. Note that the **.random** file is treated like a ring buffer of random bits.
+**random(n)**, where n is an integer greater than zero, behaves like **Kernel::rand(n)**. It is only dependent on the **.random** file, not on how the **.random** file was generated. Note that the **.random** file is treated like a ring buffer of random bits.
 
 CheapRandom::cheap\_random3!(is\_randomizing, perm, s)
 ------------------------------------------------------
