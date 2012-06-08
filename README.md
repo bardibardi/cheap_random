@@ -3,7 +3,7 @@ CheapRandom
 
 Description
 -----------
-CheapRandom is a set of tools for pseudo random number generation from arbitrary data. CheapRandom gives complete control over the number generation - useful for easily repeatable software testing.
+CheapRandom is a set of tools for pseudo random number generation from arbitrary data. CheapRandom gives complete control over the number generation - useful for easily repeatable software testing. CheapRandom is information conserving and generally appears to produce lower chi-squared statistics than Kernel::rand.
 
 Version
 -------
@@ -11,11 +11,11 @@ v0.8.0 beta, developed using ruby 1.9.3 and rspec 2.10.0.
 
 Installation
 ------------
-Clone the repository and use the .rb files in the lib directory. Create a directory called random parallel to the repository. Use examples/make\_seed.rb to make a seed file - (a 256 byte permutation file)
+Clone the repository. Create a directory called random, parallel to the repository. Use examples/make\_seed.rb to make a seed file - (a 256 byte permutation file) from arbitrary data using the default seed.
 
 Usage and documentation
 -----------------------
-Study the programs in the examples and spec directories. See below for more information.
+Study the programs in the examples and spec directories and use the .rb files in the lib directory. See below for more information.
 
 License
 -------
@@ -33,7 +33,11 @@ Use examples/cb.rb to see how to use lib/cheap\_bits.rb to create a random numbe
 
 Manage a large file used as the source of random numbers
 --------------------------------------------------------
-The large file does not need to be kept if it is something like jruby-bin-1.6.7.2.zip. One can keep a reference to its internet location, a sha1 hash and the seed file used when creating the .random file.
+The large file does not need to be kept if it is something like jruby-bin-1.6.7.2.zip. For example, one can keep a reference to its internet location, its sha1 hash and the seed file used when creating its .random file.
+
+Manage the seed file used when processing arbitrary data into random bits
+-------------------------------------------------------------------------
+The seed file does not need to be kept if it is generated from the default seed and some arbitrary file, say a picture of a pet cat. One can simply keep the picture of the pet cat.
 
 CheapBits#random(n) in lib/cheap\_bits.rb
 -----------------------------------------
