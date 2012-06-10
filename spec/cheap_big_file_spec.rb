@@ -5,10 +5,11 @@ require 'stringio'
 module CheapTest
 
   FAKE_XLAT = lambda do |is_do, perm, s|
-    perm.dup << s.length
+    return [s.length] unless perm
+    perm << s.length
   end
 
-  CF = CheapBigFile.new(9, '', '', [], FAKE_XLAT)
+  CF = CheapBigFile.new(9, nil, nil, nil, FAKE_XLAT)
 
 end
 
@@ -16,8 +17,7 @@ describe "CheapBigFile's block handling for CheapRandom" do
   it "should return blocks usable as 256 byte chunks" do
     (257..3000).each do |i|
       fd_in = StringIO.new('x' * i)
-      fd_out = StringIO.new
-      a = CheapTest::CF.xlat_big fd_in, fd_out, CheapTest::FAKE_XLAT
+      a = CheapTest::CF.xlat_big fd_in, nil, CheapTest::FAKE_XLAT
       len = a.length
       exist = len > 0
       exist.should == true
@@ -36,11 +36,10 @@ describe "CheapBigFile's block handling for CheapRandom" do
 end
 
 describe "CheapBigFile's block handling for CheapRandom" do
-  it "should return small blocks less than 257" do
+  it "should return small blocks less than size 257" do
     (1..256).each do |i|
-      fd_in = StringIO.new('x'*i)
-      fd_out = StringIO.new
-      a = CheapTest::CF.xlat_big fd_in, fd_out, CheapTest::FAKE_XLAT
+      fd_in = StringIO.new('x' * i)
+      a = CheapTest::CF.xlat_big fd_in, nil, CheapTest::FAKE_XLAT
       len = a.length
       len.should == 1
       same_size = a[-1] == i
