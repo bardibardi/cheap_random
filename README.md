@@ -81,4 +81,5 @@ chi\_squared.rb
 
 Test
 ----
-Make sure that the **../../random** directory exists and contains the files **pet_cat.png**, **pet_cat.seed**, **the.seed**, **test.zip** and **test.zip.random** as described above. Run **rspec**. The tests are quite comprehensive. The **CheapRandom algorithm** ,an original work by Bardi Einarsson, has been in use for 6 years. Note that a huge **test.zip.random** could take minutes to process.
+Make sure that the **../random** directory exists and contains the files **pet_cat.png**, **pet_cat.seed**, **the.seed**, **test.zip** and **test.zip.random** as described above. Run **rspec**. The tests are quite comprehensive. The **CheapRandom algorithm** ,an original work by Bardi Einarsson, has been in use for 6 years.
+
