@@ -69,7 +69,7 @@ make\_seed.rb
 
 cr.rb
 -----
-**ruby examples/cr.rb test.zip** => **../random/test.zip.random** and **../random/test.seed**
+**ruby examples/cr.rb test.zip** => **../random/test.zip.random** and **../random/test.zip.seed**
 
 cb.rb
 -----
@@ -81,5 +81,5 @@ chi\_squared.rb
 
 Test
 ----
-Make sure that the **../random** directory exists and contains the files **pet_cat.png**, **pet_cat.seed**, **the.seed**, **test.zip** and **test.zip.random** as described above. Run **rspec**. The tests are quite comprehensive. The **CheapRandom algorithm** ,an original work by Bardi Einarsson, has been in use for 6 years.
+Make sure that the **../random** directory exists and contains the files **pet_cat.png**, **pet_cat.png.seed**, **the.seed**, **test.zip** and **test.zip.random** as described above. Run **rspec**. The tests are quite comprehensive. The **CheapRandom algorithm** ,an original work by Bardi Einarsson, has been in use for 6 years.
 
