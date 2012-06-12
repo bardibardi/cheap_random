@@ -10,7 +10,7 @@ if CheapDependency.cd_test?
   CheapDependency.cd_get 'cheap_test'
 end
 
-BASE_DIR = File.expand_path('../../random', File.dirname(__FILE__))
+BASE_DIR = File.expand_path('../random', File.dirname(__FILE__))
 # SEED = CheapRandom.cheap_seed!('secret' * 100)
 # CheapFile.to_file "#{BASE_DIR}/the.seed", SEED
 SEED = CheapFile.from_file "#{BASE_DIR}/the.seed"

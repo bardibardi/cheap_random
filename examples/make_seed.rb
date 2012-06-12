@@ -7,7 +7,7 @@ CheapDependency.cd_get(
   'cheap_big_file'
 )
 
-BASE_DIR = File.expand_path('../../random', File.dirname(__FILE__))
+BASE_DIR = File.expand_path('../random', File.dirname(__FILE__))
 SEED = CheapRandom.reverse_perm
 XLAT = lambda {|is_do, perm, s| CheapRandom.cheap_random3! is_do, perm, s}
 XLAT_EXT = '.random'

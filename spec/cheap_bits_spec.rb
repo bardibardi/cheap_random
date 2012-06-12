@@ -5,7 +5,7 @@ load 'cheap_byte_count.rb'
 
 module CheapTest
 
-  BASE_DIR ||= File.expand_path('../../random', File.dirname(__FILE__))
+  BASE_DIR ||= File.expand_path('../random', File.dirname(__FILE__))
   RANDOM_FILE_SOURCE ||= "test.zip"
   XLAT_EXT ||= '.random'
   CB ||= CheapBits.new(9, BASE_DIR, RANDOM_FILE_SOURCE, XLAT_EXT)

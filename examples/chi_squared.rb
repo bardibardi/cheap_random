@@ -3,7 +3,7 @@ CHEAP_DEPENDENCY_ENV_NAME = 'CD'
 load File.expand_path('../lib/cheap_dependency.rb', File.dirname(__FILE__))
 CheapDependency.cd_get('cheap_byte_count')
 
-BASE_DIR = File.expand_path('../../random', File.dirname(__FILE__))
+BASE_DIR = File.expand_path('../random', File.dirname(__FILE__))
 XLAT_EXT = '.random'
 
 def byte_count_array(file_name)
