@@ -8,6 +8,4 @@ else
   cr s < "$1" | rpb "$1"
   mv "$1" "${1}.random"
 fi
-mv new.seed "${1}.new.seed"
-mv the.seed "${1}.the.seed"
 

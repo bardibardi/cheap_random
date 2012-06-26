@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'cheap_random'
-  s.version = '0.9.2'
-  s.date = '2012-06-12'
+  s.version = '0.9.3'
+  s.date = '2012-06-26'
   s.summary = 'pseudo random number generation from arbitrary data'
   s.description = <<-EOT
     **CheapRandom** is a set of tools for pseudo random number generation from arbitrary data. The properties of the **CheapRandom seed** make convenient random number generation possible -- useful for easily repeatable software testing. The **CheapRandom algorithm** is information conserving and generally appears to produce lower chi-squared statistics than **Kernel::rand** i.e. it appears to be more random. The **CheapRandom algorithm**, an original work by Bardi Einarsson, has been in use for 6 years.

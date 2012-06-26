@@ -1,4 +1,13 @@
 *.gem
 doc/
 random/
-
+examples2/
+!examples2/cr.c
+!examples2/rpb.c
+!examples2/chex_pipe.rb
+!examples2/crf.rb
+!examples2/the.seed
+!examples2/pet_cat.png
+!examples2/crx
+!examples2/crxs
+!examples2/make_seed
