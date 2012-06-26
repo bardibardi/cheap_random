@@ -11,11 +11,11 @@ Simple and powerful: The **CheapRandom algorithm** is fast, fast enough to be pr
 
 Version
 -------
-v0.9.1 with comprehensive tests, developed using ruby 1.9.3 and rspec 2.10.0.
+v0.9.3 with comprehensive tests, developed using ruby 1.9.3 and rspec 2.10.0 is the same as v0.9.1 (gem v0.9.2) aside from the addition of the **examples2** directory.
 
 Installation
 ------------
-Clone the repository. Create a directory called **random** in the repository root. Use **examples/make\_seed.rb** to make a **the.seed** file - (a 256 byte permutation file) from arbitrary data using the **CheapRandom default seed**.
+Get the v0.9.3 gem or clone the repository. Create a directory called **random** in the repository root. Use **examples/make\_seed.rb** to make a **the.seed** file - (a 256 byte permutation file) from arbitrary data using the **CheapRandom default seed**.
 
 Usage and documentation
 -----------------------
@@ -83,3 +83,10 @@ Other possible uses of CheapRandom
 ----------------------------------
 There are a number of intriguing possible uses for the **CheapRandom algorithm** and the **CheapRandom seed** properties beyond random number generation.
 
+Additional Examples - C code
+----------------------------
+The **examples2** directory contains examples related to **example2/cr.c** These examples are designed to be on the PATH and require the use of a C compiler.
+
+cr.c and Friends
+----------------
+**gcc -Wall cr.c -o cr** creates the **cr** cheap random filter. Running **cr h** writes out some help text. **cr <some_file >some_file.random** is the most basic use of **cr**. **the.seed** is hard coded into **cr**. To see how use **chex_pipe.rb <the.seed** and compare the console output to the definition of SEED in **cr.c**. 

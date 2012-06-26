@@ -21,6 +21,15 @@ examples/cb.rb
 examples/chi_squared.rb
 examples/cr.rb
 examples/make_seed.rb
+examples2/chex_pipe.rb
+examples2/cr.c
+examples2/crf.rb
+examples2/crx
+examples2/crxs
+examples2/make_seed
+examples2/pet_cat.png
+examples2/rpb.c
+examples2/the.seed
 lib/cheap_big_file.rb
 lib/cheap_bits.rb
 lib/cheap_byte_count.rb

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == *.random ]]
+then
+  cr u < "$1" | rpb "$1"
+  mv "$1" "${1%.random}"
+else
+  cr < "$1" | rpb "$1"
+  mv "$1" "${1}.random"
+fi
+

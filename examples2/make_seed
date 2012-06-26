@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cr ms < "$1" > "${1}.random"
+cp "${1}.new.seed" the.seed
+
