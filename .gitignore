@@ -11,3 +11,9 @@ examples2/
 !examples2/crx
 !examples2/crxs
 !examples2/make_seed
+examples3/
+!examples3/cr.c
+!examples3/rpb.c
+!examples3/crx.bat
+!examples3/crxs.bat
+!examples3/make_seed.bat

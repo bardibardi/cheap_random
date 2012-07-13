@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 cr ms <"$1" >/dev/null
-cp "new.seed" the.seed
-rm "new.seed"
-
+rm the.seed
+mv new.seed the.seed
